@@ -1,12 +1,12 @@
 include <BOSL2/std.scad>
 include <BOSL2/polyhedra.scad>
 
+$fn=96;
 
-
+             
 module clip(diam=13, length=20, wall=2, open=0.95, offset=0) {
     openm = open*diam;
     dwall=diam+wall;
-    $fn=72;
     translate([0, offset, ]) minkowski() {
         difference() {
             cylinder(h=length-2, d=diam+wall/2+0.01);
@@ -38,34 +38,36 @@ module hexsphere(r=100, wall=2, shape=undef, faces=undef, hole_ratio=0.9) {
     }
 }
 
-translate([40,50, 0])
-scale([0.8, 1, 1.2])
+//translate([60,80, 0])
+scale([0.7, 1, .9])
 rotate([0, 0, 198.5])
 intersection() {
-    $fn=72;
-    minkowski() {
-        hexsphere(r=50, wall=0.1, shape="dodecahedron");
+    //hexsphere(r=55, wall=3, shape="icosidodecahedron");
+    hexsphere(r=48, wall=4, shape="icosidodecahedron");
+    /*minkowski() {
+        hexsphere(r=80, wall=0.1, shape="dodecahedron");
         sphere(r=2);
+    }*/
+    translate([0, 0, 100]) cube(200, center=true);
+};
+//translate([60,80, 0])
+scale([0.7, 1, 1]) 
+linear_extrude(4)
+circle(r=48);
+
+//belt strap
+rotate([0, 0, 90])
+union() {
+    translate([-15, -11, -6])
+    union() {
+        translate([0, 0, 0])
+        cube([30, 11,3]);
+         translate([15, 11, 0])
+        cylinder(3, 15, 15, $fn=10);
     }
-    translate([0, 0, 50]) cube(100, center=true);
-};
-
-
-linear_extrude(2)
-difference() {
-    $fn=72;
-    minkowski() {
-        union() {
-            translate([40,50, 0])
-                scale([0.8, 1, 1]) 
-                circle(r=48);
-            translate([20,50, 0])
-                square([40, 90]);
-        };
-        circle(r=1);
-    };
-    translate([25,105, 0]) square([3, 28]);
-    translate([52,105, 0]) square([3, 28]);
-
-};
-translate([40, 65, 9]) rotate([90, 0, 0]) clip(diam=12, length=8, offset=5);
+    translate([-1.5, 11, -6])
+    cube([3, 3,4.5]);
+    translate([-15, -16, -6])
+    cube([30, 5,6]);
+}
+translate([0, 20, 9]) rotate([90, 0, 0]) clip(diam=15, length=20, offset=5);
