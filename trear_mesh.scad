@@ -43,10 +43,10 @@ scale([0.8, 1, 1.2])
 rotate([0, 0, 198.5])
 intersection() {
     $fn=72;
-    minkowski() {
-        hexsphere(r=50, wall=0.1, shape="dodecahedron");
+    //minkowski() {
+        hexsphere(r=50, wall=5, shape="dodecahedron");
         sphere(r=2);
-    }
+    //}
     translate([0, 0, 50]) cube(100, center=true);
 };
 
@@ -54,7 +54,7 @@ intersection() {
 linear_extrude(2)
 difference() {
     $fn=72;
-    minkowski() {
+    //minkowski() {
         union() {
             translate([40,50, 0])
                 scale([0.8, 1, 1]) 
@@ -63,7 +63,7 @@ difference() {
                 square([40, 90]);
         };
         circle(r=1);
-    };
+    //};
     translate([25,105, 0]) square([3, 28]);
     translate([52,105, 0]) square([3, 28]);
 

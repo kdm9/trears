@@ -75,5 +75,5 @@ union() {
     }
 
 }
-translate([0, 8, 15/2+2.6+0.5+4-eps])
-    clip(din=15, h=20, wall=2.6, open=12, stemw=16, stemh=0.5);
+translate([0, 0, 11.9/2+2+0.5+4-eps])
+    clip(din=11.9, h=10, wall=2, open=10, stemw=14, stemh=0.5);
