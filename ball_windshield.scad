@@ -34,7 +34,6 @@ module toroid_slot(id=20, od=25, recess=0, ) {
 
 
 //hexsphere(r=45, wall=4.5, shape="truncated icosahedron");
-
 module support1() {
     translate([0, -16, 27])
         rotate([139, 0, 0])  
@@ -59,14 +58,12 @@ translate([0, 0, 20])
         union() {
             translate([0, 0, -20]) 
                 hexsphere(r=45, wall=4.5, shape="truncated icosahedron");
-            cylinder(h=22, d=35);
+            cylinder(h=40, d=35);
         }
-        translate([0, 0, -0.5])  cylinder(h=23, d=23.5);
-        translate([0, 0, 5])  toroid_slot(od=28.1, id=22, recess=-0.5);
-        translate([0, 0, 17]) toroid_slot(od=28.1, id=22, recess=-0.5);
+        translate([0, 0, -0.5])  cylinder(h=41, d=23.5);
+        translate([0, 0, 5])  toroid_slot(od=29.5, id=23.1, recess=1);
+        translate([0, 0, 35]) toroid_slot(od=29.5, id=23.1, recess=1);
     }
 
 //color("#666666")  cylinder(h=125, d=23.1);
-
-
     
